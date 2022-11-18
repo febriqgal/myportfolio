@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <div className={`bg-gradient-to-r from-red-500 via-blue-500 to-yellow-500`}>
       <motion.div
-        className="progress-bar fixed rounded-xl bg-slate-50 bottom-0 left-0 right-0 h-1 z-[999] origin-top"
+        className="progress-bar fixed rounded-xl bg-slate-50 top-0 left-0 right-0 h-1 z-[999] origin-top"
         style={{ scaleX }}
       />
       <Head>
@@ -103,7 +103,7 @@ export default function Home() {
           boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
         }}
       >
-        <div className="h-5 bg-red-500 w-5 absolute left-5">dd</div>
+        <div className="h-5  w-5 absolute left-5"> </div>
         <div className={`w-screen mx-auto bg-center flex justify-center`}>
           <Image src={Pasisidev} className="w-[150px] mr-2" alt={"dasdas"} />
         </div>
