@@ -9,13 +9,20 @@ import Walk from "../public/Walk.png";
 import Write from "../public/Write.png";
 import Pasisidev from "../public/pasisiadev.png";
 import Febri from "../public/febri.png";
-
+import { motion, useScroll, useSpring } from "framer-motion";
 import Image from "next/image";
+
 export default function Home() {
   const [clientWindowHeight, setClientWindowHeight] = useState("");
   const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
   const [padding, setPadding] = useState(10);
   const [boxShadow, setBoxShadow] = useState(0);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -29,7 +36,7 @@ export default function Home() {
   useEffect(() => {
     let backgroundTransparacyVar = clientWindowHeight / 600;
     if (backgroundTransparacyVar < 1) {
-      let paddingVar = 40 - backgroundTransparacyVar * 20;
+      let paddingVar = 20 + backgroundTransparacyVar * 5;
       let boxShadowVar = backgroundTransparacyVar * 0.1;
       setBackgroundTransparacy(backgroundTransparacyVar);
       setPadding(paddingVar);
@@ -39,11 +46,16 @@ export default function Home() {
 
   return (
     <div className={`bg-gradient-to-r from-red-500 via-blue-500 to-yellow-500`}>
+      <motion.div
+        className="progress-bar fixed rounded-xl bg-slate-50 bottom-0 left-0 right-0 h-1 z-[999] origin-top"
+        style={{ scaleX }}
+      />
       <Head>
         <title>Febriqgal Purnama</title>
         <meta name="description" content="Febriqgal" />
         <link rel="icon" href="/icon.png" />
       </Head>
+
       <nav
         className="backdrop-blur-sm w-screen hidden lg:fixed lg:block z-50"
         style={{
